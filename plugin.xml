@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Sample Category"
+            id="Test.commands.category">
+      </category>
+      <command
+            categoryId="Test.commands.category"
+            id="Test.commands.sampleCommand"
+            name="Open IntentsRegistry">
+      </command>
+      <command
+      		categoryId="Test.commands.category"
+            id="Test.command1"
+            name="About Plugin">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="Test.commands.sampleCommand"
+            class="test.handlers.SampleHandler">
+      </handler>
+      <handler
+            class="test.handlers.TestHandler"
+            commandId="Test.command1">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="Test.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="IntentsRegistry"
+               mnemonic="M"
+               id="Test.menus.sampleMenu">
+            <command
+                  commandId="Test.commands.sampleCommand"
+                  mnemonic="S"
+                  id="Test.menus.sampleCommand">
+            </command>
+            <command
+                  commandId="Test.command1"
+                  mnemonic="S"
+                  id="Test.menus.sampleCommand2">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="Test.toolbars.sampleToolbar">
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
